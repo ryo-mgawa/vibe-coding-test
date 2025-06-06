@@ -20,17 +20,20 @@ const poems = [
 ];
 
 const catImages = [
-  "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop&crop=center",
-  "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&h=400&fit=crop&crop=center",
-  "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400&h=400&fit=crop&crop=center",
-  "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=400&fit=crop&crop=center",
-  "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&h=400&fit=crop&crop=center",
+  "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop&crop=center&auto=format",
+  "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&h=400&fit=crop&crop=center&auto=format",
+  "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400&h=400&fit=crop&crop=center&auto=format",
+  "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=400&fit=crop&crop=center&auto=format",
+  "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&h=400&fit=crop&crop=center&auto=format",
+  "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg",
+  "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_960_720.jpg",
 ];
 
 function App() {
   const [currentPoem, setCurrentPoem] = useState<string>("");
   const [currentImage, setCurrentImage] = useState<string>("");
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [, setImageError] = useState<boolean>(false);
 
   const readPoem = () => {
     const randomPoem = poems[Math.floor(Math.random() * poems.length)];
@@ -38,6 +41,7 @@ function App() {
 
     setCurrentPoem(randomPoem);
     setCurrentImage(randomImage);
+    setImageError(false);
     setIsVisible(true);
   };
 
@@ -45,6 +49,7 @@ function App() {
     setIsVisible(false);
     setCurrentPoem("");
     setCurrentImage("");
+    setImageError(false);
   };
 
   return (
@@ -83,6 +88,8 @@ function App() {
                   w="full"
                   h="300px"
                   objectFit="cover"
+                  onError={() => setImageError(true)}
+                  fallbackSrc="https://via.placeholder.com/300x300/E2E8F0/718096?text=🐱"
                 />
               </Box>
 
