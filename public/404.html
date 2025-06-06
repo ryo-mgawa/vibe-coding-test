@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>猫の詩</title>
+    <script>
+      // GitHub Pages SPAルーティング用
+      // リダイレクトURLをindexページに送信
+      var pathname = window.location.pathname.slice(1);
+      if (pathname) {
+        window.location.replace(
+          window.location.origin +
+            "/vibe-coding-test/" +
+            "?redirect=" +
+            pathname
+        );
+      } else {
+        window.location.replace(window.location.origin + "/vibe-coding-test/");
+      }
+    </script>
+  </head>
+  <body>
+    <div>リダイレクト中...</div>
+  </body>
+</html>
